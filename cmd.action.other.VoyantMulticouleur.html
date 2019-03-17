@@ -1,0 +1,68 @@
+<div style="padding:0;width:70px;min-height:10px;" class="cmd reportModeHidden cmd-widget" data-type="action" data-subtype="other" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#">
+	<!-- Info Widget
+		Créer par			: JAG
+		Mise à jour 20181111 09:30	: Mise à jour de l'explication
+		Mise à jour 20181201 14:00 	: Uniformalisation du code des Widgets JAG
+		Mise à jour 20190317		: JAG 20190317 : ajout centrer widget (merci à Antoinekl1)
+	-->
+	<center>
+    	<div class="row">
+		<div class='cmdName' style="font-weight:bold;font-size:10px;#hideCmdName#;">#valueName#</div>
+		<div class="btn btn-sm  action cmdName tooltips" title="#name#" ></div>
+	</div>
+	</center>
+    <script>
+      	// Options de personnalisation avec valeur par defaut 
+          // Paramètrage du logo
+              // Couleur - Nom des couleurs : BK=Noir - BU=Bleu - GN=Vert - OR=Orange - RD=Rouge - WH=Blanc - YE=Jaune
+                  // CouleurON
+                      var srcImgColorON	= ('#CouleurON#'!='#'+'CouleurON#') ? "#CouleurON#" : "GN";
+                  // CouleurOFF
+                      var srcImgColorOFF	= ('#CouleurOFF#'!='#'+'CouleurOFF#') ? "#CouleurOFF#" : "RD";
+              // Forme - Nom des formes : CARRE ou ROND
+                  // FormeON
+                      var srcImgFormON	= ('#FormeON#'!='#'+'FormeON#') ? "#FormeON#" : "ROND";
+                  // FormeOFF
+                      var srcImgFormOFF	= ('#FormeOFF#'!='#'+'FormeOFF#') ? "#FormeOFF#" : "ROND";     			
+          // Paramétrage des images
+                      var srcImgURL 	= 'plugins/widget/core/template/dashboard/cmd.action.other.VoyantMulticouleur/';
+                      var srcImgOn 		= srcImgURL + srcImgFormON +'_' + srcImgColorON +'.png'; 		// Pour Valeur = 1
+                      var srcImgOff 	= srcImgURL + srcImgFormOFF +'_' + srcImgColorOFF +'.png';  	// Pour valeur = 0   
+      
+            if(jeedom.cmd.normalizeName('#name#') == 'on'){
+        		if('#state#' != ''){
+          			$('.cmd[data-cmd_uid=#uid#] .btn').append('<img src="'+srcImgOff+'"/>');
+        		}else{
+          			$('.cmd[data-cmd_uid=#uid#] .btn').append('<img src="'+srcImgOn+'"/>');
+      			}
+      		}else{
+          		if('#state#' != ''){
+          			$('.cmd[data-cmd_uid=#uid#] .btn').append('<img src="'+srcImgOn+'"/>');
+        		}else{
+          			$('.cmd[data-cmd_uid=#uid#] .btn').append('<img src="'+srcImgOff+'"/>');
+        		}
+      		}
+
+      jeedom.cmd.update['#id#'] = function(_options){
+          if(parseInt(_options.display_value) != 'NaN'){
+            if(jeedom.cmd.normalizeName('#name#') == 'on'){
+              if(parseInt(_options.display_value) >= 1 ) {
+                  $('.cmd[data-cmd_uid=#uid#]').hide();
+              }else{
+                  $('.cmd[data-cmd_uid=#uid#]').show();
+              }
+            }else{
+              if(parseInt(_options.display_value) <= 0 ) {
+                    $('.cmd[data-cmd_uid=#uid#]').hide();
+                }else{
+                    $('.cmd[data-cmd_uid=#uid#]').show();
+                }
+            }
+          }
+      }
+      jeedom.cmd.update['#id#']({display_value:'#state#'});
+      $('.cmd[data-cmd_uid=#uid#]:last .action').on('click', function () {
+          jeedom.cmd.execute({id: '#id#'});
+      });
+    </script>
+</div>
