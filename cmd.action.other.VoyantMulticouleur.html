@@ -18,17 +18,19 @@
               // Couleur - Nom des couleurs : BK=Noir - BU=Bleu - GN=Vert - OR=Orange - RD=Rouge - WH=Blanc - YE=Jaune
                   // CouleurON
                      	var srcImgColorON	= ('#CouleurON#'!='#'+'CouleurON#') ? "#CouleurON#" : "GN";
+                        var srcImglogoON_T 	= ('#logoON_type#'!='#'+'logoON_type#') ? "#logoON_type#" : "png";
                   // CouleurOFF
-                     var srcImgColorOFF	= ('#CouleurOFF#'!='#'+'CouleurOFF#') ? "#CouleurOFF#" : "RD";
+                        var srcImgColorOFF	= ('#CouleurOFF#'!='#'+'CouleurOFF#') ? "#CouleurOFF#" : "RD";
+                        var srcImglogoOFF_T 	= ('#logoON_type#'!='#'+'logoON_type#') ? "#logoON_type#" : "png";
               // Forme - Nom des formes : CARRE ou ROND
                   // FormeON
-                     var srcImgFormON		= ('#FormeON#'!='#'+'FormeON#') ? "#FormeON#" : "ROND";
+                        var srcImgFormON		= ('#FormeON#'!='#'+'FormeON#') ? "#FormeON#" : "ROND";
                   // FormeOFF
-                     var srcImgFormOFF	= ('#FormeOFF#'!='#'+'FormeOFF#') ? "#FormeOFF#" : "ROND";     			
+                        var srcImgFormOFF	= ('#FormeOFF#'!='#'+'FormeOFF#') ? "#FormeOFF#" : "ROND";     			
           // Paramétrage des images
-                    	var srcImgURL 		= 'plugins/widget/core/template/dashboard/cmd.action.other.VoyantMulticouleur/';
-					var srcImgOn 		= srcImgURL + srcImglogoON +'.'+ srcImglogoON_T; 	// Pour Valeur = 1
-					var srcImgOff 		= srcImgURL + srcImglogoOFF +'.'+ srcImglogoOFF_T;  	// Pour valeur = 0 
+                        var srcImgURL 		= 'plugins/widget/core/template/dashboard/cmd.action.other.VoyantMulticouleur/';
+                        var srcImgOn 		= srcImgURL + srcImgFormON +'_'+ srcImgColorON +'.'+ srcImglogoON_T; 	// Pour Valeur = 1
+                        var srcImgOff 		= srcImgURL + srcImgFormOFF +'_'+ srcImgColorOFF +'.'+ srcImglogoOFF_T;  	// Pour valeur = 0 
       
             if(jeedom.cmd.normalizeName('#name#') == 'on'){
         		if('#state#' != ''){
