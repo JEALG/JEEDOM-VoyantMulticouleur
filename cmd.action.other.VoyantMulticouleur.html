@@ -8,7 +8,7 @@
 		<center>
 			<div class='cmdName' id="cmdName#id#" style="font-weight:bold;font-size:10px;#hideCmdName#;margin-bottom: 0px">#valueName#</div>
 				<div class="content-sm ">
-					<span class="cursor iconCmd content-sm" title="#name#" ></span>
+					<span class="cursor iconCmd#uid# content-sm" title="#name#" ></span>
 				</div>
 			<div class="value">
 				<span class="timeCmd#uid# timeCmd label label-default value"title=""></span>
@@ -43,19 +43,19 @@
 				$('.cmd[data-cmd_id=#id#]').hide();
 			}else{
 				$('.cmd[data-cmd_id=#id#]').show();
-				$('.cmd[data-cmd_id=#id#] .iconCmd').empty().append('<img src="'+srcImgOn+'"/>');
+				$('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgOn+'"/>');
 			}
 		} else {
 			if (jeedom.cmd.normalizeName('#name#') == 'off') {
 				$('.cmd[data-cmd_id=#id#]').hide();
 			}else{
 				$('.cmd[data-cmd_id=#id#]').show();
-				$('.cmd[data-cmd_id=#id#] .iconCmd').empty().append('<img src="'+srcImgOff+'"/>');
+				$('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgOff+'"/>');
 			}
 		}
 	}
 	jeedom.cmd.update['#id#']({display_value:'#state#'});
-		$('.cmd[data-cmd_uid=#uid#] .iconCmd').off().on('click', function () {
+		$('.cmd[data-cmd_uid=#uid#] .iconCmd#uid#').off().on('click', function () {
 			jeedom.cmd.execute({id: '#id#'});
 		});	 
 </script>
