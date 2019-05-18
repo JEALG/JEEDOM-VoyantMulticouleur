@@ -2,58 +2,58 @@
 	<!-- Info Widget
 		Créer par		: JAG
 		Mise à jour 	: Mise à jour de l'explication
-		Mise à jour		: JAG 20190505 : Amélioration du code (correction de bug)
+		Mise à jour		: JAG 20190518 : Amélioration du code (correction de bug)
 	-->
-    <div class="row title #hide_name#">
-        <center>
-            <div class='cmdName' id="cmdName#id#" style="font-weight:bold;font-size:10px;#hideCmdName#;margin-bottom: 0px">#valueName#</div>
-            <div class="content-sm ">
-                <span class="cursor iconCmd#id# content-sm" title="#name#" ></span>
-            </div>
-            <div class="value">
-                <span class="timeCmd#uid# timeCmd label label-default value"title=""></span>
-            </div>
-        </center>
+     <div class="title #hide_name#">
+        <div class="cmdName">#valueName#</div>
     </div>
-    <script>
-        jeedom.cmd.update['#id#'] = function(_options){
-        // Paramètrage du logo
-  			// Valeur pour couleur ON
-                var srcImgColorON	= ('#CouleurON#'!='#'+'CouleurON#') ? "#CouleurON#" : "GN";
-                var srcImglogoON_T 	= ('#logoON_type#'!='#'+'logoON_type#') ? "#logoON_type#" : "png";
-                var srcImgFormON	= ('#FormeON#'!='#'+'FormeON#') ? "#FormeON#" : "ROND";
-  			// Valeur pour couleur OFF
-                var srcImgColorOFF	= ('#CouleurOFF#'!='#'+'CouleurOFF#') ? "#CouleurOFF#" : "RD";
-                var srcImglogoOFF_T = ('#logoOFF_type#'!='#'+'logoOFF_type#') ? "#logoOFF_type#" : "png";
-                var srcImgFormOFF	= ('#FormeOFF#'!='#'+'FormeOFF#') ? "#FormeOFF#" : "ROND";
-		// Paramètre "sizeh" & "sizew"
-				var srcImgHeight	= is_numeric('#sizeh#') ? parseFloat('#sizeh#'):80;
-				var srcImgWidth 	= is_numeric('#sizew#') ? parseFloat('#sizew#'):80;
-  				var srcImgSize 		= 'height='+srcImgHeight+'px width='+srcImgWidth+'px';
-		// Paramétrage des images
-				var srcImgURL 		= 'plugins/widget/core/template/dashboard/cmd.action.other.VoyantMulticouleur/';
-      			var srcImgOn 		= srcImgURL + srcImgFormON +'_'+ srcImgColorON +'.'+ srcImglogoON_T;    // Pour Valeur = 1
-      			var srcImgOff 		= srcImgURL + srcImgFormOFF +'_'+ srcImgColorOFF +'.'+ srcImglogoOFF_T; // Pour valeur = 0  
-
-            if (_options.display_value == '1' || _options.display_value == 1 || _options.display_value == '99' || _options.display_value == 99 || _options.display_value == 'on') {
-                if (jeedom.cmd.normalizeName('#name#') == 'on') {
-                    $('.cmd[data-cmd_id=#id#]').hide();
-                }else{
-                    $('.cmd[data-cmd_id=#id#]').show();
-                    $('.cmd[data-cmd_id=#id#] .iconCmd#id#').empty().append('<img src="'+srcImgOn+'" '+srcImgSize+'>');
-                }
-            } else {
-                if (jeedom.cmd.normalizeName('#name#') == 'off') {
-                    $('.cmd[data-cmd_id=#id#]').hide();
-                }else{
-                    $('.cmd[data-cmd_id=#id#]').show();
-                    $('.cmd[data-cmd_id=#id#] .iconCmd#id#').empty().append('<img src="'+srcImgOff+'" '+srcImgSize+'>');
-                }
-            }
-        }
-        jeedom.cmd.update['#id#']({display_value:'#state#'});
-        $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').off().on('click', function () {
-            jeedom.cmd.execute({id: '#id#'});
-        });
-    </script>
+        <div class="content-sm ">
+            <span class="iconCmd#uid#"></span>
+    </div>
+    <div style="font-weight: bold;font-size : 10px;">
+        <span class="timeCmd#uid#" ></span>
+    </div>
 </div>
+<script>
+	jeedom.cmd.update['#id#'] = function(_options){
+		// Options de personnalisation avec valeur par defaut 
+			// Paramètrage du logo
+				// Couleur - Nom des couleurs : BK=Noir - BU=Bleu - GN=Vert - OR=Orange - RD=Rouge - WH=Blanc - YE=Jaune
+					// CouleurON
+						var srcImgColorON	= ('#CouleurON#'!='#'+'CouleurON#') ? "#CouleurON#" : "GN";
+						var srcImglogoON_T 	= ('#logoON_type#'!='#'+'logoON_type#') ? "#logoON_type#" : "png";
+					// CouleurOFF
+						var srcImgColorOFF	= ('#CouleurOFF#'!='#'+'CouleurOFF#') ? "#CouleurOFF#" : "RD";
+						var srcImglogoOFF_T = ('#logoOFF_type#'!='#'+'logoOFF_type#') ? "#logoOFF_type#" : "png";
+				// Forme - Nom des formes : CARRE ou ROND
+					// FormeON
+						var srcImgFormON	= ('#FormeON#'!='#'+'FormeON#') ? "#FormeON#" : "ROND";
+					// FormeOFF
+						var srcImgFormOFF	= ('#FormeOFF#'!='#'+'FormeOFF#') ? "#FormeOFF#" : "ROND";     			
+			// Paramétrage des images
+						var srcImgURL 		= 'plugins/widget/core/template/dashboard/cmd.action.other.VoyantMulticouleur/';
+						var srcImgOn 		= srcImgURL + srcImgFormON +'_'+ srcImgColorON +'.'+ srcImglogoON_T; 	// Pour Valeur = 1
+						var srcImgOff 		= srcImgURL + srcImgFormOFF +'_'+ srcImgColorOFF +'.'+ srcImglogoOFF_T;  	// Pour valeur = 0 
+  
+
+		if (_options.display_value == '1' || _options.display_value == 1 || _options.display_value == '99' || _options.display_value == 99 || _options.display_value == 'on') {
+			if (jeedom.cmd.normalizeName('#name#') == 'on') {
+				$('.cmd[data-cmd_id=#id#]').hide();
+			}else{
+				$('.cmd[data-cmd_id=#id#]').show();
+				$('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgOn+'"/>');
+			}
+		} else {
+			if (jeedom.cmd.normalizeName('#name#') == 'off') {
+				$('.cmd[data-cmd_id=#id#]').hide();
+			}else{
+				$('.cmd[data-cmd_id=#id#]').show();
+				$('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgOff+'"/>');
+			}
+		}
+	}
+	jeedom.cmd.update['#id#']({display_value:'#state#'});
+		$('.cmd[data-cmd_uid=#uid#] .iconCmd#uid#').off().on('click', function () {
+			jeedom.cmd.execute({id: '#id#'});
+		});	 
+</script>
