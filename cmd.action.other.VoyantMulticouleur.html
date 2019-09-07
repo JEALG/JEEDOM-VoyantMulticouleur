@@ -35,14 +35,14 @@
 				$('.cmd[data-cmd_id=#id#]').hide();
 			}else{
 				$('.cmd[data-cmd_id=#id#]').show();
-				$('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgURL +srcImgFormON +'_'+srcImgColorON +'.'+ srcImglogoON_T+'">');
+				$('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgURL +'vo_' +srcImgFormON +'_'+srcImgColorON +'.'+ srcImglogoON_T+'">');
 			}
 		} else {
 			if (jeedom.cmd.normalizeName('#name#') == 'off') {
 				$('.cmd[data-cmd_id=#id#]').hide();
 			}else{
 				$('.cmd[data-cmd_id=#id#]').show();
-				$('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgURL +srcImgFormOFF +'_'+srcImgColorOFF +'.'+ srcImglogoOFF_T+'">');
+				$('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgURL +'vo_' +srcImgFormOFF +'_'+srcImgColorOFF +'.'+ srcImglogoOFF_T+'">');
 			}
 		}
 	}
